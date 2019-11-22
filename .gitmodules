@@ -1,0 +1,3 @@
+[submodule "chernoOpenGL/dep/spdlog"]
+	path = chernoOpenGL/dep/spdlog
+	url = https://github.com/gabime/spdlog.git
