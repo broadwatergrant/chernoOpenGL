@@ -1,6 +1,7 @@
 #include "VertexArray.h"
 
 #include "Renderer.h"
+#include "VertexBufferLayout.h"
 
 #include "Log.h"
 #if DEBUG
@@ -29,7 +30,7 @@ void VertexArray::unbind() const
     glCall( glBindVertexArray( 0 ) );
 }
 
-void VertexArray::AddBuffer(const VertexBuffer & aVertexBuffer, const VertexBufferLayout & aLayout)
+void VertexArray::AddBuffer(const VertexBuffer& aVertexBuffer, const VertexBufferLayout& aLayout)
 {
     this->bind();
     aVertexBuffer.bind();

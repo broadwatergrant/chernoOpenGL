@@ -3,7 +3,9 @@
 #include "Renderer.h"
 #include "Log.h"
 
-IndexBuffer::IndexBuffer(const index_t* data, const size_t count)
+IndexBuffer::IndexBuffer( const index_t* data, const size_t count )
+    : mRendererId( 0 )
+    , mCount( count )
 {
     ASSERT( sizeof(index_t) == sizeof( GLuint ) );
 

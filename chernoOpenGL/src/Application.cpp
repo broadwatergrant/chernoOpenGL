@@ -91,6 +91,7 @@ void renderLoop( GLFWwindow* window )
 
     // Compile shaders
     ShaderProgram shaderProgram( "res/shaders/vertex.shader", "res/shaders/fragment.shader" );
+    Renderer renderer;
 
     // Initialize loop variables
     float r         = 0.00f;
@@ -99,7 +100,7 @@ void renderLoop( GLFWwindow* window )
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        glClear(GL_COLOR_BUFFER_BIT);
+        renderer.clear();
 
         // Update loop variables
         if( !( 0.0f <= r && r <= 1.0f ) )
@@ -108,15 +109,8 @@ void renderLoop( GLFWwindow* window )
         }
         r += r_inc;
 
-        shaderProgram.bind();
         shaderProgram.setUniform4f( "u_Color", r, 0.0f, 0.0f, 1.0f );
-
-        // Bind vertex array & index buffer
-        vArray.bind();
-        iBuffer.bind();
-
-        // Draw
-        glCall( glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr ) );
+        renderer.draw( vArray, iBuffer, shaderProgram );
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
